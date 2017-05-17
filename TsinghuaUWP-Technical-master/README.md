@@ -11,7 +11,7 @@ V1.6版本
 - DataAccess.cs作为唯一数据获得接口 
 - 使用Povit Control
 ---
-# 重构版本0
-## 优化login函数
-## TV多线路
-## 重写了一部分UI
+## 重构版本0
+- 优化login函数
+- TV多线路
+- 重写了一部分UI
