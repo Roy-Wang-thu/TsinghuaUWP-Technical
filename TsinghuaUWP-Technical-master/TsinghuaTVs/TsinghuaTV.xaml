@@ -21,7 +21,7 @@
                         <Setter Target="TVList.(Grid.Row)" Value="1"/>
                         <Setter Target="TVPlayer.(Grid.Row)" Value="0"/>
                         <Setter Target="TVPlayer.(Grid.Column)" Value="0"/>
-                        <Setter Target="TVList.Height" Value="200"/>
+                        <Setter Target="TVList.Height" Value="165"/>
                         <Setter Target="TVList.(Grid.ColumnSpan)" Value="2"/>
                         <Setter Target="TVPlayer.(Grid.ColumnSpan)" Value="2"/>
                     </VisualState.Setters>
@@ -46,19 +46,19 @@
 
 
         <Grid >
-            
-           
-            
+
+
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="AUTO"></RowDefinition>
             </Grid.RowDefinitions>
-            
+
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="220"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <ScrollViewer Grid.Column="0" Name="TVList">
                 <GridView Name="TVGrid" 
                           ItemsSource="{x:Bind TV1}"
@@ -103,6 +103,27 @@
                 </MenuFlyout>
             </Button.Flyout>-->
         </Button>
-        <TextBlock Grid.Row="2" Height="Auto"  Width="Auto"  HorizontalAlignment="Right" Text="视频源为清华内网, 不用走流量, 需要连接清华内网"></TextBlock>
+        <Grid Grid.Row="2" BorderBrush="MediumPurple">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <ToggleSwitch  VerticalAlignment="Center" Margin="10,0,0,0" Name="InOut" Grid.Column="0" OnContent="校内" OffContent="校外" IsOn="True" Width="116" ></ToggleSwitch>
+            <Button Content="Tips/提示" Grid.Column="1" HorizontalAlignment="Right" Background="MediumPurple" Margin="10,0,10,0">
+                <Button.Flyout>
+                    <Flyout Placement="Top">
+                        <Grid>
+                            <TextBlock TextWrapping="Wrap" Margin="2"> 校内连接Tsinghua WiFi时选择校内模式,不走流量；<LineBreak/>
+                                校外或者连接其他网络时请选择校外模式。</TextBlock>
+                        </Grid>
+                    </Flyout>
+
+                </Button.Flyout>
+            </Button>
+           <!-- <TextBlock  Grid.Column="1" Height="Auto"  Width="Auto"  TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Right" Text="校内连接Tsinghua WiFi时选择校内模式,不走流量；校外或者连接其他网络时请选择校外模式"></TextBlock>-->
+        </Grid>
+
     </Grid>
 </Page>

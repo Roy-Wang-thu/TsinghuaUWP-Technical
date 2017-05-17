@@ -6,33 +6,61 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Loaded="Coursebuttons_Click"
+   Loaded="Oninitial"
     >
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CoursePivot.(Grid.Column)" Value="0"/>
+                        <Setter Target="CoursePivot.(Grid.Row)" Value="2"/>
+                       
+                        <Setter Target="CoursePivot.(Grid.ColumnSpan)" Value="3"/>
+                        <Setter Target="Cousetitle.FontSize" Value="24"/>
+                        <Setter Target="Coursegd.(Grid.ColumnSpan)" Value="3"/>
+                        <Setter Target="Coursegd.(Grid.RowSpan)" Value="1"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="500"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                       
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <TextBlock  Text="课程列表"  Height="Auto" Width="Auto"  FontSize="40" Margin="20,5,20,5" TextAlignment="Left"></TextBlock>
-
+            <TextBlock  Name="Cousetitle" Text="课程列表"  Height="Auto" Width="Auto"  FontSize="40" Margin="20,5,20,5" TextAlignment="Left"></TextBlock>
+            <Button BorderBrush="MediumVioletRed" Name="Coursebuttons" FontFamily="Segoe MDL2 Assets" Content="&#xE117;" Click="Coursebuttons_Click" Visibility="Visible"></Button>
         </StackPanel>
 
-        <Button Grid.Column="0" Name="Coursebuttons" Content="133" Click="Coursebuttons_Click" Visibility="Collapsed"></Button>
+        
         <TextBlock  Name="coursetry" Text="trying" Visibility="Collapsed"></TextBlock>
 
 
 
 
-        <Grid Grid.Row="1"  Name="Coursegd">
+        <Grid Grid.Row="1"  Name="Coursegd" Grid.RowSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -65,7 +93,8 @@
         <Pivot Grid.Column="2" Grid.RowSpan="3" Name="CoursePivot" Title="作业和公告" SelectionChanged="CourseGrid_SelectionChanged">
             <PivotItem Header="作业">
                 <ScrollViewer >
-                    <StackPanel>
+                    <Grid>
+                        
                         <ListView Name="HWGrid" 
                           ItemsSource="{x:Bind ddl1}"
                         SelectionChanged="HWGrid_SelectionChanged"
@@ -78,10 +107,12 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <TextBlock Visibility="Collapsed">无数据</TextBlock>
                         <Rectangle Visibility='Collapsed' Width="1000" Grid.ColumnSpan="4" Fill="Gray" Height="1.5" Margin="12,1,1,1" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"></Rectangle>
-                    </StackPanel>
+                    </Grid>
 
                 </ScrollViewer>
+                
             </PivotItem>
 
             <PivotItem Header="公告" >

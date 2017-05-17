@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -36,26 +37,69 @@ namespace TsinghuaUWP.WebLearn
             courses1 = new ObservableCollection<Course>();
             ddl1 = new ObservableCollection<Deadline>();
             announces = new ObservableCollection<Announce>();
+            
 
+        }
 
+        private async void Oninitial(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                listcourses = await DataAccess.getCourses();//temp
+                courses1.Clear();
+                listcourses.ForEach(p => courses1.Add(p));
+            }
+            catch
+            {
+
+            }
         }
 
         private async void Coursebuttons_Click(object sender, RoutedEventArgs e)
         {
             PR0.IsActive = true;
+
+            try {
+
+                listcourses = await DataAccess.getCourses(forceRemote: true);//temp
+                Debug.WriteLine("[remote refresh]await DataAccess.getCourses(forceRemote: true)");
+            }
+            catch
+            {
+
+                //MessageDialog a = new MessageDialog("Wrong data local try remote");
+                //await a.ShowAsync();
+                Debug.WriteLine("[remote refresh]Wrong data local try remote");
+            }
             try
             {
-               
-                listcourses = await DataAccess.getCourses();//temp
-                courses1.Clear();
-                
-               await DataAccess.getAllAnnounce(true);
-               await DataAccess.getAllDeadlines(true);
+                await DataAccess.getAllAnnounce(forceRemote: true);
+                Debug.WriteLine("[remote refresh] await DataAccess.getAllAnnounce(forceRemote: true);");
+            }
+            catch
+            {
+                MessageDialog a = new MessageDialog("Wrong data anc remote");
+                await a.ShowAsync();
+            }
+            try
+            {
+                await DataAccess.getAllDeadlines(forceRemote: true);
+                Debug.WriteLine("[remote refresh]await DataAccess.getAllDeadlines(forceRemote: true);");
+            }
+            catch
+            {
+                MessageDialog a = new MessageDialog("Wrong data ddl remote");
+                await a.ShowAsync();
+            }
+
+            try
+            {
+                 courses1.Clear();
                 listcourses.ForEach(p => courses1.Add(p));
             }
             catch
             {
-                MessageDialog a = new MessageDialog("Wrong data");
+                MessageDialog a = new MessageDialog("Wrong data add to list");
                 await a.ShowAsync();
             }
             PR0.IsActive = false;

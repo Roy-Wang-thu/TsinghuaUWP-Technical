@@ -17,11 +17,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
-            <WebView  Margin="0"  Name="ancview"   Height="500" Width="400"  ></WebView>
-            
-
-
+            <ScrollViewer>
+                <WebView  Margin="0"  Name="ancview"   Height="500" Width="300"   ></WebView>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </ContentDialog>

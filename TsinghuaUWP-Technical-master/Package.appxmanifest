@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="33254nullspace.442756612481C" Publisher="CN=03155EEE-D512-488E-9665-514F20C1D599" Version="2.0.0.0" />
+  <Identity Name="amtz" Publisher="CN=thuzh" Version="0.0.9.0" />
   <mp:PhoneIdentity PhoneProductId="d8409b59-c942-4acf-bb62-ed8b067e25e7" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>清华磁贴</DisplayName>
-    <PublisherDisplayName>Zhaoyang Li</PublisherDisplayName>
+    <DisplayName>清华</DisplayName>
+    <PublisherDisplayName>amtz</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Tsinghua_UWP.App">
-      <uap:VisualElements DisplayName="清华磁贴" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="校历，课表，作业 - Tsinghua Tile" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="清华" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="校历，课表，作业 - Tsinghua Tile" BackgroundColor="transparent">
         <uap:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\LockScreenLogo.png" />
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" ShortName="清华磁贴" Square71x71Logo="Assets\Square71x71Logo.png">
           <uap:ShowNameOnTiles>

@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using TsinghuaUWP.Courses;
 using TsinghuaUWP.Logins;
+using TsinghuaUWP.Mails;
 using TsinghuaUWP.TsinghuaTVs;
 using TsinghuaUWP.WebLearn;
 using TsinghuaUWP.Webs;
@@ -28,6 +29,7 @@ namespace TsinghuaUWP {
         public MainPage()
         {
             this.InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Enabled;
             var bb = AnalyticsInfo.VersionInfo.DeviceFamily;
             if (bb == "Windows.Desktop" || bb == "Windows.Tablet")
             {
@@ -92,8 +94,9 @@ namespace TsinghuaUWP {
             else if (Mails.IsSelected)
             {
                 Refresh.Visibility = Visibility.Collapsed;
-                Webview.Visibility = Visibility.Visible;
-                Webview.Navigate(new Uri("http://mails.tsinghua.edu.cn/coremail/xphone/index.jsp"));
+                // Webview.Visibility = Visibility.Visible;
+                // Webview.Navigate(new Uri("http://mails.tsinghua.edu.cn/coremail/xphone/index.jsp"));
+                MyFrame.Navigate(typeof(Email));
                 //MyFrame.Navigate(typeof(WEBS));
                 TitleTextBlock.Text = "清华邮箱";
             }
