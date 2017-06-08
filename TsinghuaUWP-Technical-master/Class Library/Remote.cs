@@ -369,7 +369,7 @@ namespace TsinghuaUWP
 
         private static DateTime lastLogin = DateTime.MinValue;
         private static string lastLoginUsername = "";
-        private static int LOGIN_TIMEOUT_MINUTES = 5;
+        private static int LOGIN_TIMEOUT_MINUTES = 2;
 
         private static string loginSslvpnUri = "https://sslvpn.tsinghua.edu.cn/dana-na/auth/url_default/login.cgi";
         private static string logoutSslvpnUrl = "https://sslvpn.tsinghua.edu.cn/dana-na/auth/logout.cgi";
@@ -729,7 +729,8 @@ namespace TsinghuaUWP
             return await httpResponse.Content.ReadAsStringAsync();
         }
 
-        private static async Task<string> POST(string url, string form_string)
+        //注意此处需要改回private
+        public static async Task<string> POST(string url, string form_string)
         {
             HttpStringContent stringContent = new HttpStringContent(
                 form_string,

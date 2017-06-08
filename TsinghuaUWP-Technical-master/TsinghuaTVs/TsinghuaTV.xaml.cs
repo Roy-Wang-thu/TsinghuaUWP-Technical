@@ -44,9 +44,14 @@ namespace TsinghuaUWP.TsinghuaTVs
             string Url
         = "https://iptv.tsinghua.edu.cn/player.html?vid=cctv1hd";
             int tp = TVGrid.SelectedIndex;
-            Url = TTT[tp].URL;
+            if (InOut.IsOn)
+                Url = TTT[tp].URL;
+            else
+                Url = TTT[tp].URLS;
             // Webview.Navigate(new Uri(Url));
             MyMedias.Source = new Uri(Url);
         }
+
+      
     }
 }

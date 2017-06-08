@@ -46,7 +46,7 @@ namespace TsinghuaUWP
                 }
                 else
                 {
-                    MessageDialog a = new MessageDialog("数据错误");
+                    MessageDialog a = new MessageDialog("数据错误courseget");
                     await a.ShowAsync();
                 }
 
@@ -76,7 +76,7 @@ namespace TsinghuaUWP
                 }
                 catch
                 {
-                    MessageDialog a = new MessageDialog("数据错误");
+                    MessageDialog a = new MessageDialog("数据错误parseHW");
                     await a.ShowAsync();
                 }
             }
@@ -106,7 +106,7 @@ namespace TsinghuaUWP
                 }
                 catch
                 {
-                    MessageDialog a = new MessageDialog("数据错误");
+                    MessageDialog a = new MessageDialog("数据错误ANC");
                     await a.ShowAsync();
                 }
             }
