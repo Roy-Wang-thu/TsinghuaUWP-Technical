@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading.Tasks;
 
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
@@ -29,14 +30,15 @@ namespace ClassRoomAPI
             this.InitializeComponent();
         }
 
-        private void HHH_Click(object sender, RoutedEventArgs e)
+        private async void HHH_Click(object sender, RoutedEventArgs e)
         {
-            NavMenuPrimaryListView.ItemsSource= ParseBuildingClassData.GetListBuildingInfo();
+            var Data=await ClassRoomAPIs.ParseBuildingClassData.GetListBuildingInfoAsync();
+            NavMenuPrimaryListView.ItemsSource = Data; 
         }
 
         private void GetHallList_Click(object sender, RoutedEventArgs e)
         {
-            HallListView.ItemsSource = ParseShowList.GetListShow();
+            HallListView.ItemsSource = ClassRoomAPIs.ParseShowList.GetListShow();
         }
     }
 }

@@ -28,7 +28,7 @@
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\ClassRoomAPI.exe">
       <PackagePath>entrypoint\ClassRoomAPI.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\thuzhang\.nuget\packages\HtmlAgilityPack\1.6.1\lib\uap10.0\HtmlAgilityPack.dll">
+    <AppxPackagedFile Include="C:\Users\thuzhang\.nuget\packages\HtmlAgilityPack\1.6.2\lib\uap10.0\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thuzhang\.nuget\packages\Microsoft.CSharp\4.3.0\lib\netcore50\Microsoft.CSharp.dll">

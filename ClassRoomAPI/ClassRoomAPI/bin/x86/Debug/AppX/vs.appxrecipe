@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>02C005A030C5F103D26B01D5447B3FB4DE30402C5952AB094A71DBBAEA0D8EB0</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>EB7867B3A27B43E45035B2D34FD38584C3C1B55067E39A96C87E0C97D47DCED5</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>a13bc5b0-ee05-4897-921a-1d2014f58888_1.0.0.0_x86__a11re3hbys0ay</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>a13bc5b0-ee05-4897-921a-1d2014f58888_a11re3hbys0ay!App</RegisteredUserModeAppID>
     <RegisteredPackageID>a13bc5b0-ee05-4897-921a-1d2014f58888</RegisteredPackageID>
@@ -31,17 +31,17 @@
     <AppXManifest Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-10-25T06:56:55.226</Modified>
+      <Modified>2017-10-27T13:46:37.544</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\ClassRoomAPI.exe">
       <PackagePath>entrypoint\ClassRoomAPI.exe</PackagePath>
-      <Modified>2017-10-25T06:56:54.619</Modified>
+      <Modified>2017-10-27T13:46:36.880</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\thuzhang\.nuget\packages\HtmlAgilityPack\1.6.1\lib\uap10.0\HtmlAgilityPack.dll">
+    <AppxPackagedFile Include="C:\Users\thuzhang\.nuget\packages\HtmlAgilityPack\1.6.2\lib\uap10.0\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
-      <Modified>2017-10-16T02:13:20.000</Modified>
+      <Modified>2017-10-23T15:34:04.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thuzhang\.nuget\packages\Microsoft.CSharp\4.3.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -584,11 +584,11 @@
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-10-25T06:56:55.059</Modified>
+      <Modified>2017-10-27T13:32:07.244</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Core\ClassRoomAPI.exe">
       <PackagePath>ClassRoomAPI.exe</PackagePath>
-      <Modified>2017-10-25T06:56:55.221</Modified>
+      <Modified>2017-10-27T13:46:37.534</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

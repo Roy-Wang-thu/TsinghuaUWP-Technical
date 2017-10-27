@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "UAP,Version=v10.0.10586": {
-      "HtmlAgilityPack/1.6.1": {
+      "HtmlAgilityPack/1.6.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -2532,7 +2532,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-arm": {
-      "HtmlAgilityPack/1.6.1": {
+      "HtmlAgilityPack/1.6.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -5099,7 +5099,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-arm-aot": {
-      "HtmlAgilityPack/1.6.1": {
+      "HtmlAgilityPack/1.6.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -7702,7 +7702,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-x64": {
-      "HtmlAgilityPack/1.6.1": {
+      "HtmlAgilityPack/1.6.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -10278,7 +10278,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-x64-aot": {
-      "HtmlAgilityPack/1.6.1": {
+      "HtmlAgilityPack/1.6.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -12890,7 +12890,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-x86": {
-      "HtmlAgilityPack/1.6.1": {
+      "HtmlAgilityPack/1.6.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -15466,7 +15466,7 @@
       }
     },
     "UAP,Version=v10.0.10586/win10-x86-aot": {
-      "HtmlAgilityPack/1.6.1": {
+      "HtmlAgilityPack/1.6.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
@@ -18079,12 +18079,12 @@
     }
   },
   "libraries": {
-    "HtmlAgilityPack/1.6.1": {
-      "sha512": "OzgD25T6trD+voy/RXtwy3jl/9YLG/fmWBLHSM3dIyRVmannVm08xKFMqRxJ1PwA95x52qahMwhxEgAcIH5HDw==",
+    "HtmlAgilityPack/1.6.2": {
+      "sha512": "d1aRn9leFG3ISpfy0GMnFVHegKB3X6rIdkF/E+20+DOCssZuz4FDshEocV6P8K86dOQzILnISprKH8l6QM3bfQ==",
       "type": "package",
-      "path": "htmlagilitypack/1.6.1",
+      "path": "htmlagilitypack/1.6.2",
       "files": [
-        "htmlagilitypack.1.6.1.nupkg.sha512",
+        "htmlagilitypack.1.6.2.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net20/HtmlAgilityPack.dll",
         "lib/Net20/HtmlAgilityPack.pdb",
@@ -28245,7 +28245,7 @@
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.10586": [
-      "HtmlAgilityPack >= 1.6.1",
+      "HtmlAgilityPack >= 1.6.2",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.0.1",
       "Newtonsoft.Json >= 10.0.3"
     ]
@@ -28283,7 +28283,7 @@
     "dependencies": {
       "HtmlAgilityPack": {
         "target": "Package",
-        "version": "1.6.1"
+        "version": "1.6.2"
       },
       "Microsoft.NETCore.UniversalWindowsPlatform": {
         "target": "Package",
@@ -28299,7 +28299,7 @@
         "dependencies": {
           "HtmlAgilityPack": {
             "target": "Package",
-            "version": "1.6.1"
+            "version": "1.6.2"
           },
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",

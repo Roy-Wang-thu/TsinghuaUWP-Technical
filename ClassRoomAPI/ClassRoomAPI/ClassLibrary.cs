@@ -49,7 +49,7 @@ namespace ClassRoomAPI
             return (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)));
         }
 
-        public static async Task 十１ｓ(double seconds = 1)
+        public static async Task WaitTask(double seconds = 1)
         {
             await Task.Delay(TimeSpan.FromSeconds(seconds));
         }
@@ -74,7 +74,7 @@ namespace ClassRoomAPI
                 
             }
 
-            public static string stringify(object jsonObject)
+            public static string Stringify(object jsonObject)
             {
                 using (var ms = new MemoryStream())
                 {
