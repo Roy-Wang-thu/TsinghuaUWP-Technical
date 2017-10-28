@@ -69,7 +69,7 @@
                 
             </Grid>
         </DataTemplate >
-
+    
         <DataTemplate x:Key="HallDataTemplate" x:DataType="local:ClassRoomData">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -96,9 +96,9 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
+
         <Pivot Title="Information Hub">
             <PivotItem Header="Classroom Information">
                 <Grid>

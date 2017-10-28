@@ -1,4 +1,3 @@
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\ClassRoomAPI.csprojResolveAssemblyReference.cache
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\App.g.i.cs
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\App.g.cs
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\MainPage.g.i.cs
@@ -9,6 +8,7 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\MainPage.
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\App.xbf
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\MainPage.xbf
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\XamlSaveStateFile.xml
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\ClassRoomAPI.csproj.CoreCompileInputs.cache
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\App.xbf
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\MainPage.xbf
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\ClassRoomAPI.xr.xml
@@ -35,6 +35,7 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Xm
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Xml.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Microsoft.VisualBasic.dll
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Newtonsoft.Json.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Collections.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Diagnostics.Tools.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Diagnostics.Tracing.dll
@@ -53,6 +54,7 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Te
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Threading.Tasks.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Threading.Timer.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Microsoft.Win32.Primitives.dll
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Console.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Diagnostics.Debug.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.IO.FileSystem.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Net.Primitives.dll
@@ -70,6 +72,8 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Co
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.ComponentModel.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.ComponentModel.Annotations.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.ComponentModel.EventBasedAsync.dll
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.ComponentModel.Primitives.dll
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.ComponentModel.TypeConverter.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Data.Common.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Diagnostics.Contracts.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Diagnostics.DiagnosticSource.dll
@@ -105,8 +109,10 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Re
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Reflection.Emit.Lightweight.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Reflection.Metadata.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Reflection.TypeExtensions.dll
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Runtime.InteropServices.WindowsRuntime.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Runtime.Numerics.dll
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Runtime.Serialization.Formatters.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Runtime.Serialization.Json.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Runtime.Serialization.Primitives.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Runtime.Serialization.Xml.dll
@@ -138,7 +144,6 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Xm
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Xml.XPath.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Xml.XPath.XDocument.dll
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Xml.XPath.XmlDocument.dll
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\ClassRoomAPI.csproj.CoreCompileInputs.cache
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\ClassRoomAPI.exe
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\ClassRoomAPI.pdb
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\ResourceHandlingTask.state
@@ -147,6 +152,7 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResourc
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Collections.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.IO.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Runtime.InteropServices.SR.resw
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Console.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Diagnostics.Debug.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.IO.FileSystem.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Net.Primitives.SR.resw
@@ -160,6 +166,8 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResourc
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Collections.Specialized.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.ComponentModel.Annotations.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.ComponentModel.EventBasedAsync.SR.resw
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.ComponentModel.Primitives.SR.resw
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.ComponentModel.TypeConverter.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Data.Common.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Dynamic.Runtime.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Globalization.Extensions.SR.resw
@@ -184,7 +192,9 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResourc
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Private.ServiceModel.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Reflection.DispatchProxy.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Reflection.Metadata.SR.resw
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Runtime.InteropServices.RuntimeInformation.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Runtime.Numerics.SR.resw
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Runtime.Serialization.Formatters.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Runtime.Serialization.Primitives.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Runtime.WindowsRuntime.SR.resw
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Runtime.WindowsRuntime.UI.Xaml.SR.resw
@@ -222,14 +232,9 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\resources
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\resources.en-us.resfiles.intermediate
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\HtmlAgilityPack.pri.xml
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\ProjectArchitectures.txt
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Newtonsoft.Json.dll
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Console.dll
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.ComponentModel.Primitives.dll
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.ComponentModel.TypeConverter.dll
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\System.Runtime.Serialization.Formatters.dll
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Console.SR.resw
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.ComponentModel.Primitives.SR.resw
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.ComponentModel.TypeConverter.SR.resw
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Runtime.InteropServices.RuntimeInformation.SR.resw
-C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\FxResources.System.Runtime.Serialization.Formatters.SR.resw
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\ClassRoomAPI.csprojResolveAssemblyReference.cache
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Shell.xbf
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Shell.g.i.cs
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Shell.g.cs
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Shell.xaml
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Shell.xbf

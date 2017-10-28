@@ -71,7 +71,7 @@ namespace ClassRoomAPI
                     Debug.WriteLine("JSON" + typeof(T).ToString());
                     throw new Exception("JSON" + typeof(T).ToString());
                 }
-                
+
             }
 
             public static string Stringify(object jsonObject)
