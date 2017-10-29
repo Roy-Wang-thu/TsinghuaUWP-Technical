@@ -1,4 +1,5 @@
 ﻿using ClassRoomAPI.Controls;
+using ClassRoomAPI.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,6 +10,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System.Profile;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,8 +29,6 @@ namespace ClassRoomAPI
     /// </summary>
     public sealed partial class Shell : Page
     {
-
-
         private static List<NavMenuItem> navMenuPrimaryItem = new List<NavMenuItem>(
             new[]
             {
@@ -36,12 +36,19 @@ namespace ClassRoomAPI
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE80F",
-                    Label = "新闻",
+                    Label = "TOPIC1",
                     Selected = Visibility.Visible,
                     DestPage = typeof(MainPage)
                 },
-                
 
+                new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xE80F",
+                    Label = "新闻",
+                    Selected = Visibility.Visible,
+                    DestPage = typeof(News)
+                },
 
             });
 
@@ -61,6 +68,8 @@ namespace ClassRoomAPI
         public Shell()
         {
             this.InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+
             NavigationCacheMode = NavigationCacheMode.Enabled;
             var bb = AnalyticsInfo.VersionInfo.DeviceFamily;
             if (bb == "Windows.Desktop" || bb == "Windows.Tablet")
@@ -76,8 +85,7 @@ namespace ClassRoomAPI
 
             }
 
-            NavMenuPrimaryListView.ItemsSource = navMenuPrimaryItem;
-            NavMenuSecondaryListView.ItemsSource = navMenuSecondaryItem;
+           
             // SplitView 开关
             PaneOpenButton.Click += (sender, args) =>
             {
@@ -88,14 +96,59 @@ namespace ClassRoomAPI
             NavMenuSecondaryListView.ItemClick += NavMenuListView_ItemClick;
             // 默认页
 
+            foreach (var np in navMenuPrimaryItem)
+            {
+                np.Selected = Visibility.Collapsed;
+            }
+            foreach (var ns in navMenuSecondaryItem)
+            {
+                ns.Selected = Visibility.Collapsed;
+            }
+            RootFrame.SourcePageType = navMenuPrimaryItem[0].DestPage;
+            navMenuPrimaryItem[0].Selected = Visibility.Visible;
+            NavMenuPrimaryListView.ItemsSource = navMenuPrimaryItem;
+            NavMenuSecondaryListView.ItemsSource = navMenuSecondaryItem;
+        }
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
 
-            RootFrame.SourcePageType = typeof(MainPage);
+        {
+
+            if (!e.Handled && RootFrame.CanGoBack)
+
+            {
+
+                e.Handled = true;
+                
+               RootFrame.GoBack();
+
+            }
+            SyncMenu();
 
         }
 
+        private void SyncMenu()
+        {
+            var PrimarySource=NavMenuPrimaryListView.ItemsSource;
+            var SecondSource = NavMenuSecondaryListView.ItemsSource;
+            var PageType = RootFrame.SourcePageType;
 
-
-
+            foreach (var np in navMenuPrimaryItem)
+            {
+                if(np.DestPage == PageType)
+                    np.Selected = Visibility.Visible;
+                else
+                    np.Selected = Visibility.Collapsed;
+            }
+            foreach (var ns in navMenuSecondaryItem)
+            {
+                if (ns.DestPage == PageType)
+                    ns.Selected = Visibility.Visible;
+                else
+                    ns.Selected = Visibility.Collapsed;
+            }
+            NavMenuPrimaryListView.ItemsSource = navMenuPrimaryItem;
+            NavMenuSecondaryListView.ItemsSource = navMenuSecondaryItem;
+        }
 
         //UI界面处理函数
         private void NavMenuListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -120,6 +173,19 @@ namespace ClassRoomAPI
             }
 
             RootSplitView.IsPaneOpen = false;
+        }
+
+        private void MainFrame_OnNavigated(object sender, NavigationEventArgs e)
+        {
+
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+
+                    ((Frame)sender).CanGoBack
+
+                        ? AppViewBackButtonVisibility.Visible
+
+                        : AppViewBackButtonVisibility.Collapsed;
+
         }
     }
 }

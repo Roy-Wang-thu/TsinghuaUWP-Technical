@@ -237,3 +237,9 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\Mai
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\Shell.xaml
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\MainPage.xbf
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\Shell.xbf
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\ClassRoomAPI.csprojResolveAssemblyReference.cache
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Views\News.xbf
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\News.g.i.cs
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\News.g.cs
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\News.xaml
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\News.xbf
