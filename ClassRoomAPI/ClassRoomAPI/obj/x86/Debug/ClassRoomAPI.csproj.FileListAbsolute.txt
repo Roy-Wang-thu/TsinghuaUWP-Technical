@@ -243,3 +243,8 @@ C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\New
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\News.g.cs
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\News.xaml
 C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\News.xbf
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Views\BlankPage.xbf
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\BlankPage.g.i.cs
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\BlankPage.g.cs
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\BlankPage.xaml
+C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\obj\x86\Debug\Views\BlankPage.xbf

@@ -132,19 +132,21 @@ namespace ClassRoomAPI.ClassRoomAPI_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[5];
-            _typeNameTable[0] = "ClassRoomAPI.MainPage";
+            _typeNameTable = new string[6];
+            _typeNameTable[0] = "ClassRoomAPI.Views.BlankPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "ClassRoomAPI.Views.News";
-            _typeNameTable[4] = "ClassRoomAPI.Shell";
+            _typeNameTable[3] = "ClassRoomAPI.MainPage";
+            _typeNameTable[4] = "ClassRoomAPI.Views.News";
+            _typeNameTable[5] = "ClassRoomAPI.Shell";
 
-            _typeTable = new global::System.Type[5];
-            _typeTable[0] = typeof(global::ClassRoomAPI.MainPage);
+            _typeTable = new global::System.Type[6];
+            _typeTable[0] = typeof(global::ClassRoomAPI.Views.BlankPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::ClassRoomAPI.Views.News);
-            _typeTable[4] = typeof(global::ClassRoomAPI.Shell);
+            _typeTable[3] = typeof(global::ClassRoomAPI.MainPage);
+            _typeTable[4] = typeof(global::ClassRoomAPI.Views.News);
+            _typeTable[5] = typeof(global::ClassRoomAPI.Shell);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -179,9 +181,10 @@ namespace ClassRoomAPI.ClassRoomAPI_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::ClassRoomAPI.MainPage(); }
-        private object Activate_3_News() { return new global::ClassRoomAPI.Views.News(); }
-        private object Activate_4_Shell() { return new global::ClassRoomAPI.Shell(); }
+        private object Activate_0_BlankPage() { return new global::ClassRoomAPI.Views.BlankPage(); }
+        private object Activate_3_MainPage() { return new global::ClassRoomAPI.MainPage(); }
+        private object Activate_4_News() { return new global::ClassRoomAPI.Views.News(); }
+        private object Activate_5_Shell() { return new global::ClassRoomAPI.Shell(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -193,9 +196,9 @@ namespace ClassRoomAPI.ClassRoomAPI_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  ClassRoomAPI.MainPage
+            case 0:   //  ClassRoomAPI.Views.BlankPage
                 userType = new global::ClassRoomAPI.ClassRoomAPI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+                userType.Activator = Activate_0_BlankPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -208,16 +211,23 @@ namespace ClassRoomAPI.ClassRoomAPI_XamlTypeInfo
                 xamlType = new global::ClassRoomAPI.ClassRoomAPI_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  ClassRoomAPI.Views.News
+            case 3:   //  ClassRoomAPI.MainPage
                 userType = new global::ClassRoomAPI.ClassRoomAPI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_News;
+                userType.Activator = Activate_3_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  ClassRoomAPI.Shell
+            case 4:   //  ClassRoomAPI.Views.News
                 userType = new global::ClassRoomAPI.ClassRoomAPI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_Shell;
+                userType.Activator = Activate_4_News;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  ClassRoomAPI.Shell
+                userType = new global::ClassRoomAPI.ClassRoomAPI_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_5_Shell;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

@@ -44,8 +44,8 @@ namespace ClassRoomAPI
                 new NavMenuItem()
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
-                    Icon = "\xE80F",
-                    Label = "新闻",
+                    Icon = "\xE771",
+                    Label = "TOPIC2",
                     Selected = Visibility.Visible,
                     DestPage = typeof(News)
                 },
@@ -61,7 +61,7 @@ namespace ClassRoomAPI
                     Icon = "\xE13D",
                     Label = "登录",
                     Selected = Visibility.Collapsed,
-                    DestPage = typeof(MainPage)
+                    DestPage = typeof(BlankPage)
                 }
             });
 
@@ -135,14 +135,21 @@ namespace ClassRoomAPI
             foreach (var np in navMenuPrimaryItem)
             {
                 if(np.DestPage == PageType)
+                {
                     np.Selected = Visibility.Visible;
+                    TitleTextBlock.Text = np.Label;
+                }
+                    
                 else
                     np.Selected = Visibility.Collapsed;
             }
             foreach (var ns in navMenuSecondaryItem)
             {
                 if (ns.DestPage == PageType)
+                {
                     ns.Selected = Visibility.Visible;
+                    TitleTextBlock.Text = ns.Label;
+                }
                 else
                     ns.Selected = Visibility.Collapsed;
             }

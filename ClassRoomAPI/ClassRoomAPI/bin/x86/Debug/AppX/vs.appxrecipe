@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-10-29T13:27:03.362</Modified>
+      <Modified>2017-10-29T13:47:32.918</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\ClassRoomAPI.exe">
       <PackagePath>entrypoint\ClassRoomAPI.exe</PackagePath>
-      <Modified>2017-10-29T13:27:03.100</Modified>
+      <Modified>2017-10-29T13:47:32.433</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thuzhang\.nuget\packages\HtmlAgilityPack\1.6.2\lib\uap10.0\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
@@ -575,7 +575,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\ClassRoomAPI.xr.xml">
       <PackagePath>ClassRoomAPI.xr.xml</PackagePath>
-      <Modified>2017-10-29T13:19:04.139</Modified>
+      <Modified>2017-10-29T13:34:40.767</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.15063.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -584,11 +584,11 @@
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-10-29T13:19:04.965</Modified>
+      <Modified>2017-10-29T13:34:41.494</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Core\ClassRoomAPI.exe">
       <PackagePath>ClassRoomAPI.exe</PackagePath>
-      <Modified>2017-10-29T13:27:03.360</Modified>
+      <Modified>2017-10-29T13:47:32.902</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
