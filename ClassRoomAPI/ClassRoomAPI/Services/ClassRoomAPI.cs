@@ -1,4 +1,6 @@
-﻿using HtmlAgilityPack;
+﻿using ClassRoomAPI.Helpers;
+using ClassRoomAPI.Models;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,9 +9,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace ClassRoomAPI
+namespace ClassRoomAPI.Services
 {
-    public class ClassRoomAPIs
+    public class ClassRoomAPIService
     {
         class ClassRoom
         {
@@ -84,8 +86,8 @@ namespace ClassRoomAPI
                 if ((DateTime.Now - lastLogin).TotalMinutes < LOGIN_TIMEOUT_MINUTES)
                 {
                     Debug.WriteLine("[login] reuses recent session");
-                    var TempData = await ClassLibrary.ReadCache("ClassBuildingData");
-                    var ReturnData = ClassLibrary.JSON.Parse<List<ClassBuildingData>>(TempData);
+                    var TempData = await CacheHelper.ReadCache("ClassBuildingData");
+                    var ReturnData = JSONHelper.Parse<List<ClassBuildingData>>(TempData);
                     lastLogin = DateTime.Now;
                     return ReturnData;
 
@@ -146,15 +148,15 @@ namespace ClassRoomAPI
                         }
                         );
                     }
-                    var StringfiedData = ClassLibrary.JSON.Stringify(Data);
-                    await ClassLibrary.WriteCache("ClassBuildingData", StringfiedData);
+                    var StringfiedData = JSONHelper.Stringify(Data);
+                    await CacheHelper.WriteCache("ClassBuildingData", StringfiedData);
                     return Data;
                 }
                 catch
                 {
-                    var TempData = await ClassLibrary.ReadCache("ClassBuildingData");
-                    var ReturnData = ClassLibrary.JSON.Parse<List<ClassBuildingData>>(TempData);
-                    lastLogin = DateTime.Now;
+                    var TempData = await CacheHelper.ReadCache("ClassBuildingData");
+                    var ReturnData = JSONHelper.Parse<List<ClassBuildingData>>(TempData);
+                    lastLogin = DateTime.MinValue;
                     return ReturnData;
                 }
 
@@ -167,21 +169,6 @@ namespace ClassRoomAPI
         }
        
     }
-    public class ClassRoomData
-    {
-        public string PositionName;
-        public string DetailUri;
-    }
-    public class ClassBuildingData
-    {
-        public string BuildingName;
-        public string Date;
-        public string ClassRoomName;
-
-        //6节课1-6
-        public List<string> ListClassStatus;
-
-
-    }
+    
 
 }

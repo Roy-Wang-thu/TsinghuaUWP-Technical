@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassRoomAPI.Controls;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -15,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -70,7 +72,7 @@ namespace ClassRoomAPI
             }
             else
             {
-                Debug.WriteLine("[MainPage]This version do not support Windows Mobile Any Longer");
+                Debug.WriteLine("[Shell]This version do not support Windows Mobile Any Longer");
 
             }
 

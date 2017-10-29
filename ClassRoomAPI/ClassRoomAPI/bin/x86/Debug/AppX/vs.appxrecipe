@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-10-28T16:14:38.509</Modified>
+      <Modified>2017-10-29T07:59:33.101</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\ClassRoomAPI.exe">
       <PackagePath>entrypoint\ClassRoomAPI.exe</PackagePath>
-      <Modified>2017-10-28T16:14:37.581</Modified>
+      <Modified>2017-10-29T07:59:32.538</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thuzhang\.nuget\packages\HtmlAgilityPack\1.6.2\lib\uap10.0\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
@@ -584,11 +584,11 @@
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-10-28T16:14:38.181</Modified>
+      <Modified>2017-10-29T07:59:32.950</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\bin\x86\Debug\Core\ClassRoomAPI.exe">
       <PackagePath>ClassRoomAPI.exe</PackagePath>
-      <Modified>2017-10-28T16:14:38.500</Modified>
+      <Modified>2017-10-29T07:59:33.098</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
