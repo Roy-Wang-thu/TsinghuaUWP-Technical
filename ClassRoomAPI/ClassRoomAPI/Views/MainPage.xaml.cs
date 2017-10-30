@@ -38,6 +38,12 @@ namespace ClassRoomAPI
 
         }
 
+        public async void TempRefreshDataCortana()
+        {
+            var Data = await ClassRoomAPIService.ParseBuildingClassData.GetListBuildingInfoAsync();
+            NavMenuPrimaryListView.ItemsSource = Data;
+        }
+
         private void GetHallList_Click(object sender, RoutedEventArgs e)
         {
             HallListView.ItemsSource = ClassRoomAPIService.ParseShowList.GetListShow();

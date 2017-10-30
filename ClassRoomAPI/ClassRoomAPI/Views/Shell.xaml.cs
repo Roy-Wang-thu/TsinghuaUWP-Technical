@@ -194,5 +194,20 @@ namespace ClassRoomAPI
                         : AppViewBackButtonVisibility.Collapsed;
 
         }
+
+
+        //cortana service
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var storageFile =
+
+              await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(
+
+                new Uri("ms-appx:///VoiceCommandDictionary.xml"));
+
+            await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager
+
+                .InstallCommandDefinitionsFromStorageFileAsync(storageFile);
+        }
     }
 }

@@ -403,6 +403,9 @@
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\VoiceCommandDictionary.xml">
+      <PackagePath>VoiceCommandDictionary.xml</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thuzhang\source\repos\ClassRoomAPI\ClassRoomAPI\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>

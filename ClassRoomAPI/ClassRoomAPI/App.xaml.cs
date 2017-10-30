@@ -96,5 +96,31 @@ namespace ClassRoomAPI
             //TODO: 保存应用程序状态并停止任何后台活动
             deferral.Complete();
         }
+
+        protected override void OnActivated(IActivatedEventArgs e)
+        {
+            // Was the app activated by a voice command?
+            if (e.Kind != Windows.ApplicationModel.Activation.ActivationKind.VoiceCommand)
+            {
+                return;
+            }
+            var commandArgs = e as Windows.ApplicationModel.Activation.VoiceCommandActivatedEventArgs;
+            var speechRecognitionResult = commandArgs.Result;
+
+            string voiceCommandName = speechRecognitionResult.RulePath[0];
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            Shell ShellPage = rootFrame.Content as Shell;
+            var page = ShellPage.RootFrame;
+
+            if (page.CurrentSourcePageType != typeof(MainPage))
+                return;
+
+            MainPage CurrentPage = ShellPage.RootFrame.Content as MainPage;
+            if (voiceCommandName == "refresh")
+                CurrentPage.TempRefreshDataCortana();
+
+
+        }
     }
 }
