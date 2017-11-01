@@ -13,36 +13,11 @@ namespace ClassRoomAPI.Services
 {
     public class ClassRoomAPIService
     {
-        class ClassRoom
-        {
-            public static List<ClassRoomData> GetClassNames()
-            {
 
-                string html = "http://jxgl.cic.tsinghua.edu.cn/jxpg/f/wxjwxs/jsxx?menu=false";
-                HtmlWeb web = new HtmlWeb();
-                var htmlDoc = web.Load(html);
-                var htmlNodes = htmlDoc.DocumentNode.SelectNodes("//html/body/div/div/div[@class='list-block list-class']/div/ul/li");
-
-                var Data = new List<ClassRoomData>();
-                for (int i = 1; i < htmlNodes.Count; i++)
-                {
-                    string uri = htmlNodes[i].ChildNodes[1].Attributes["href"].Value;
-                    string PosName = htmlNodes[i].ChildNodes[1].ChildNodes[1].ChildNodes[1].ChildNodes[1].InnerText;
-                    Data.Add(new ClassRoomData
-                    {
-                        DetailUri = uri,
-                        PositionName = PosName
-                    }
-                    );
-                }
-                return Data;
-            }
-
-        }
 
         public static class ParseShowList
         {
-            public static List<ClassRoomData> GetListShow()
+            public static List<ClassRoomInfoData> GetListShow()
             {
                 string html = "http://www.hall.tsinghua.edu.cn/columnEx/pwzx_hdap/yc-dy-px-zl-jz/1";
                 HtmlWeb web = new HtmlWeb();
@@ -55,12 +30,12 @@ namespace ClassRoomAPI.Services
                 var ListNodes = doc.DocumentNode.SelectNodes("/div");
                 //ParseDataHere
 
-                var Data = new List<ClassRoomData>();
+                var Data = new List<ClassRoomInfoData>();
                 for (int i = 1; i < ListNodes.Count; i++)
                 {
                     string uri = ListNodes[i].ChildNodes[1].ChildNodes[3].ChildNodes[1].InnerText;
                     string PosName = ListNodes[i].ChildNodes[1].ChildNodes[5].ChildNodes[1].InnerText;
-                    Data.Add(new ClassRoomData
+                    Data.Add(new ClassRoomInfoData
                     {
                         DetailUri = uri,
                         PositionName = PosName
@@ -73,33 +48,82 @@ namespace ClassRoomAPI.Services
 
         }
 
-       
 
-        private static DateTime lastLogin = DateTime.MinValue;
-        private static int LOGIN_TIMEOUT_MINUTES = 1;
+        private static DateTime ClassRoomNamesLastLogin = DateTime.MinValue;
+        private static int CLASS_ROOM_NAMES_LOGIN_TIMEOUT_MINUTES = 1;
+        private static DateTime ClassRoomInfoLastLogin = DateTime.MinValue;
+        private static int CLASS_ROOM_LOGIN_TIMEOUT_MINUTES = 1;
+    
 
         public static class ParseBuildingClassData
         {
-           
-            public static async Task<List<ClassBuildingData>> GetListBuildingInfoAsync()
+            public static async Task<List<ClassRoomInfoData>> GetClassNamesAsync()
             {
-                if ((DateTime.Now - lastLogin).TotalMinutes < LOGIN_TIMEOUT_MINUTES)
+                if ((DateTime.Now - ClassRoomNamesLastLogin).TotalMinutes < CLASS_ROOM_NAMES_LOGIN_TIMEOUT_MINUTES)
                 {
-                    Debug.WriteLine("[login] reuses recent session");
-                    var TempData = await CacheHelper.ReadCache("ClassBuildingData");
-                    var ReturnData = JSONHelper.Parse<List<ClassBuildingData>>(TempData);
-                    lastLogin = DateTime.Now;
+                    Debug.WriteLine("[ClassInfoData] reuses recent session");
+                    var TempData = await CacheHelper.ReadCache("ClassRoomInfoData");
+                    var ReturnData = JSONHelper.Parse<List<ClassRoomInfoData>>(TempData);
+                    ClassRoomNamesLastLogin = DateTime.Now;
                     return ReturnData;
 
                 }
                 else
                 {
-                    lastLogin = DateTime.Now;
+                    ClassRoomNamesLastLogin = DateTime.Now;
+                }
+
+                var Data = new List<ClassRoomInfoData>();
+                try
+                {
+                    string html = "http://jxgl.cic.tsinghua.edu.cn/jxpg/f/wxjwxs/jsxx?menu=false";
+                    HtmlWeb web = new HtmlWeb();
+                    var htmlDoc = web.Load(html);
+                    var htmlNodes = htmlDoc.DocumentNode.SelectNodes("//html/body/div/div/div[@class='list-block list-class']/div/ul/li");
+                    
+                    for (int i = 1; i < htmlNodes.Count; i++)
+                    {
+                        string uri = htmlNodes[i].ChildNodes[1].Attributes["href"].Value;
+                        string PosName = htmlNodes[i].ChildNodes[1].ChildNodes[1].ChildNodes[1].ChildNodes[1].InnerText;
+                        Data.Add(new ClassRoomInfoData
+                        {
+                            DetailUri = uri,
+                            PositionName = PosName
+                        }
+                        );
+                    }
+                    var StringfiedData = JSONHelper.Stringify(Data);
+                    await CacheHelper.WriteCache("ClassRoomInfoData", StringfiedData);
+                    return Data;
+                }
+                catch
+                {
+                    var TempData = await CacheHelper.ReadCache("ClassRoomInfoData");
+                    var ReturnData = JSONHelper.Parse<List<ClassRoomInfoData>>(TempData);
+                    ClassRoomNamesLastLogin = DateTime.MinValue;
+                    return ReturnData;
+                }
+  
+            }
+
+            public static async Task<List<ClassRoomStatueData>> GetListBuildingInfoAsync(ClassRoomInfoData SourceData)
+            {
+                
+                if ((DateTime.Now - ClassRoomNamesLastLogin).TotalMinutes < CLASS_ROOM_NAMES_LOGIN_TIMEOUT_MINUTES)
+                {
+                    Debug.WriteLine("[ClassInfoData] reuses recent session");
+                    var TempData = await CacheHelper.ReadCache($"ClassBuildingData_{SourceData.PositionName}");
+                    var ReturnData = JSONHelper.Parse<List<ClassRoomStatueData>>(TempData);
+                    return ReturnData;
+                }
+                else
+                {
+                    Debug.WriteLine("[ClassInfoData] reuses recent session");
                 }
 
                 try
                 {
-                    string html = "http://jxgl.cic.tsinghua.edu.cn/jxpg/f/wxjwxs/jsxx/cx?classroom=六教&weeknumber=5&mobile=true";
+                    string html = "http://jxgl.cic.tsinghua.edu.cn/"+SourceData.DetailUri;
                     HtmlWeb web = new HtmlWeb();
                     var htmlDoc = web.Load(html);
 
@@ -112,7 +136,7 @@ namespace ClassRoomAPI.Services
 
                     var _NodeClassRoom = htmlDoc.DocumentNode.SelectNodes("/html/body/div/div/div[1]/ul/li[2]/div[@class='card-footer no-border']");
 
-                    var Data = new List<ClassBuildingData>();
+                    var Data = new List<ClassRoomStatueData>();
                     for (int i = 0; i < _NodeClassRoom.Count; i++)
                     {
                         var _NodeSpanClassRoom = _NodeClassRoom[i].ChildNodes;
@@ -139,7 +163,7 @@ namespace ClassRoomAPI.Services
                         }
 
 
-                        Data.Add(new ClassBuildingData
+                        Data.Add(new ClassRoomStatueData
                         {
                             BuildingName = _BuildingName,
                             Date = _Date,
@@ -149,23 +173,50 @@ namespace ClassRoomAPI.Services
                         );
                     }
                     var StringfiedData = JSONHelper.Stringify(Data);
-                    await CacheHelper.WriteCache("ClassBuildingData", StringfiedData);
+                    await CacheHelper.WriteCache($"ClassBuildingData_{SourceData.PositionName}", StringfiedData);
                     return Data;
                 }
                 catch
                 {
-                    var TempData = await CacheHelper.ReadCache("ClassBuildingData");
-                    var ReturnData = JSONHelper.Parse<List<ClassBuildingData>>(TempData);
-                    lastLogin = DateTime.MinValue;
+                    var TempData = await CacheHelper.ReadCache($"ClassBuildingData_{SourceData.PositionName}");
+                    var ReturnData = JSONHelper.Parse<List<ClassRoomStatueData>>(TempData);
                     return ReturnData;
                 }
 
-               
-
-
-                
+                            
             }
 
+            public static async Task<ClassBuildingInfo> GetListAllBuildingInfoAsync()
+            {
+                var _ClassBuildingInfo = new ClassBuildingInfo();
+                _ClassBuildingInfo.ListClassRoomStatue = new List<List<ClassRoomStatueData>>();
+                try
+                {
+                    
+                    var _ClassNamesAsync = await GetClassNamesAsync();
+
+                    foreach (ClassRoomInfoData item in _ClassNamesAsync)
+                    {
+                        var _ListBuildingInfo = await GetListBuildingInfoAsync(item);
+                        _ClassBuildingInfo.Date = _ListBuildingInfo[0].Date;
+                       
+                        _ClassBuildingInfo.ListClassRoomStatue.Add(_ListBuildingInfo);
+
+                    }
+                    var StringfiedData = JSONHelper.Stringify(_ClassBuildingInfo);
+                    await CacheHelper.WriteCache("AllClassRoomInfoData", StringfiedData);
+                    return _ClassBuildingInfo;
+                }
+                catch
+                {
+                    var TempData = await CacheHelper.ReadCache("AllClassRoomInfoData");
+                    var ReturnData = JSONHelper.Parse<ClassBuildingInfo>(TempData);
+                    //ClassRoomInfoLastLogin = DateTime.MinValue;
+                    return ReturnData;
+                }
+               
+
+            }
         }
        
     }
