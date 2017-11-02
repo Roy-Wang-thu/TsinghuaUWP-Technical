@@ -64,7 +64,7 @@ namespace ClassRoomAPI.Services
                     Debug.WriteLine("[ClassInfoData] reuses recent session");
                     var TempData = await CacheHelper.ReadCache("ClassRoomInfoData");
                     var ReturnData = JSONHelper.Parse<List<ClassRoomInfoData>>(TempData);
-                    ClassRoomNamesLastLogin = DateTime.Now;
+                    //ClassRoomNamesLastLogin = DateTime.Now;
                     return ReturnData;
 
                 }
@@ -112,13 +112,21 @@ namespace ClassRoomAPI.Services
                 if ((DateTime.Now - ClassRoomNamesLastLogin).TotalMinutes < CLASS_ROOM_NAMES_LOGIN_TIMEOUT_MINUTES)
                 {
                     Debug.WriteLine("[ClassInfoData] reuses recent session");
-                    var TempData = await CacheHelper.ReadCache($"ClassBuildingData_{SourceData.PositionName}");
-                    var ReturnData = JSONHelper.Parse<List<ClassRoomStatueData>>(TempData);
-                    return ReturnData;
+                    try
+                    {
+                        var TempData = await CacheHelper.ReadCache($"ClassBuildingData_{SourceData.PositionName}");
+                        var ReturnData = JSONHelper.Parse<List<ClassRoomStatueData>>(TempData);
+                        return ReturnData;
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("[ClassInfoData] 1st session");
+                    }
+                   
                 }
                 else
                 {
-                    Debug.WriteLine("[ClassInfoData] reuses recent session");
+                    Debug.WriteLine("[ClassInfoData] not reuses recent session");
                 }
 
                 try
