@@ -51,14 +51,16 @@ namespace ClassRoomAPI.Services
 
         private static DateTime ClassRoomNamesLastLogin = DateTime.MinValue;
         private static int CLASS_ROOM_NAMES_LOGIN_TIMEOUT_MINUTES = 1;
-        private static DateTime ClassRoomInfoLastLogin = DateTime.MinValue;
-        private static int CLASS_ROOM_LOGIN_TIMEOUT_MINUTES = 1;
-    
+        private static DateTime ClassRoomAllInfoLogin = DateTime.MinValue;
+        private static int CLASS_ALL_INFO_LOGIN_TIMEOUT_MINUTES = 1;
+
+
 
         public static class ParseBuildingClassData
         {
             public static async Task<List<ClassRoomInfoData>> GetClassNamesAsync()
             {
+             
                 if ((DateTime.Now - ClassRoomNamesLastLogin).TotalMinutes < CLASS_ROOM_NAMES_LOGIN_TIMEOUT_MINUTES)
                 {
                     Debug.WriteLine("[ClassInfoData] reuses recent session");
@@ -106,10 +108,10 @@ namespace ClassRoomAPI.Services
   
             }
 
-            public static async Task<List<ClassRoomStatueData>> GetListBuildingInfoAsync(ClassRoomInfoData SourceData)
+            public static async Task<List<ClassRoomStatueData>> GetListBuildingInfoAsync(ClassRoomInfoData SourceData,bool RemoteMode=true)
             {
                 
-                if ((DateTime.Now - ClassRoomNamesLastLogin).TotalMinutes < CLASS_ROOM_NAMES_LOGIN_TIMEOUT_MINUTES)
+                if (!RemoteMode)
                 {
                     Debug.WriteLine("[ClassInfoData] reuses recent session");
                     try
@@ -186,9 +188,36 @@ namespace ClassRoomAPI.Services
                 }
                 catch
                 {
-                    var TempData = await CacheHelper.ReadCache($"ClassBuildingData_{SourceData.PositionName}");
-                    var ReturnData = JSONHelper.Parse<List<ClassRoomStatueData>>(TempData);
-                    return ReturnData;
+                    try
+                    {
+                        var TempData = await CacheHelper.ReadCache($"ClassBuildingData_{SourceData.PositionName}");
+                        var ReturnData = JSONHelper.Parse<List<ClassRoomStatueData>>(TempData);
+                        return ReturnData;
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("[ClassInfoData] GetListBuildingInfoAsync fails with no data returned.");
+                        var _ListStatue = new List<string>();
+                        for (int i=0;i<6;i++)
+                        {
+                            _ListStatue.Add("N/A");
+                        }
+                        List<ClassRoomStatueData> _ReturnValue = new List<ClassRoomStatueData>(
+                            new[]
+                            {
+                                new ClassRoomStatueData()
+                                {
+                                    BuildingName="N/A",
+                                    Date="N/A",
+                                    ClassRoomName="N/A",
+
+                                    ListClassStatus=_ListStatue,
+                                },
+                            }
+                            );
+                        return _ReturnValue;
+                    }
+
                 }
 
                             
@@ -196,6 +225,19 @@ namespace ClassRoomAPI.Services
 
             public static async Task<ClassBuildingInfo> GetListAllBuildingInfoAsync()
             {
+                if ((DateTime.Now - ClassRoomAllInfoLogin).TotalMinutes < CLASS_ALL_INFO_LOGIN_TIMEOUT_MINUTES)
+                {
+                    Debug.WriteLine("[ClassAllInfoData] reuses recent session");
+                    var TempData = await CacheHelper.ReadCache("AllClassRoomInfoData");
+                    var ReturnData = JSONHelper.Parse<ClassBuildingInfo>(TempData);
+                    return ReturnData;
+
+                }
+                else
+                {
+                    ClassRoomAllInfoLogin = DateTime.Now;
+                }
+
                 var _ClassBuildingInfo = new ClassBuildingInfo();
                 _ClassBuildingInfo.ListClassRoomStatue = new List<List<ClassRoomStatueData>>();
                 try
@@ -219,7 +261,7 @@ namespace ClassRoomAPI.Services
                 {
                     var TempData = await CacheHelper.ReadCache("AllClassRoomInfoData");
                     var ReturnData = JSONHelper.Parse<ClassBuildingInfo>(TempData);
-                    //ClassRoomInfoLastLogin = DateTime.MinValue;
+                    ClassRoomAllInfoLogin = DateTime.MinValue;
                     return ReturnData;
                 }
                
