@@ -10,23 +10,26 @@ namespace ClassRoomAPI.ViewModels
 {
     public class ClassRoomInfoViewModels
     {
-        public static async Task<List<ClassRoomInfoData>> GetBuildingNames()
+        public static async Task<List<ClassRoomInfoData>> GetBuildingNames(bool RemoteMode=true)
         {
-            return await ClassRoomAPIService.ParseBuildingClassData.GetClassNamesAsync();
+            var _ReturnData = new List<ClassRoomInfoData>();
+
+            _ReturnData = await ClassRoomAPIService.ParseBuildingClassData.GetClassNamesAsync(RemoteMode);
+            return _ReturnData;
         }
 
-        public static async Task<List<ClassRoomStatueData>> GetBuildingInfoByName(string Name="四教")
+        public static async Task<List<ClassRoomStatueData>> GetBuildingInfoByName(string Name="四教", bool RemoteMode = true)
         {
-            var _OriginData = await ClassRoomAPIService.ParseBuildingClassData.GetListAllBuildingInfoAsync();
+            var _OriginData = await ClassRoomAPIService.ParseBuildingClassData.GetListAllBuildingInfoAsync(RemoteMode);
             var _ReturnData = new List<ClassRoomStatueData>();
-
-            foreach (List<ClassRoomStatueData> item in _OriginData.ListClassRoomStatue)
-            {
-                if(item[0].BuildingName==Name)
+            if(_OriginData!=null)
+                foreach (List<ClassRoomStatueData> item in _OriginData.ListClassRoomStatue)
                 {
-                    _ReturnData = item;
-                }
-            }
+                    if(item[0].BuildingName==Name)
+                     {
+                        _ReturnData = item;
+                      }
+                 }
 
             return _ReturnData;
         }

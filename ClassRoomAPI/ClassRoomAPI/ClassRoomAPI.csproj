@@ -102,6 +102,7 @@
     <Compile Include="Helpers\PostGetHelper.cs" />
     <Compile Include="Models\ClassRoomInfoModels.cs" />
     <Compile Include="Services\ClassRoomAPI.cs" />
+    <Compile Include="Services\Exceptions.cs" />
     <Compile Include="ViewModels\ClassRoomInfoViewModels.cs" />
     <Compile Include="Views\BlankPage.xaml.cs">
       <DependentUpon>BlankPage.xaml</DependentUpon>

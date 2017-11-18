@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using System.Threading.Tasks;
 using ClassRoomAPI.Services;
 using ClassRoomAPI.ViewModels;
+using Windows.UI.Popups;
 
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
@@ -34,8 +35,21 @@ namespace ClassRoomAPI
 
         private async void HHH_Click(object sender, RoutedEventArgs e)
         {
-            var Data=await ClassRoomInfoViewModels.GetBuildingInfoByName();
-            NavMenuPrimaryListView.ItemsSource = Data; 
+           
+            try
+            {
+                var Data = await ClassRoomInfoViewModels.GetBuildingInfoByName();
+                NavMenuPrimaryListView.ItemsSource = Data;
+            }
+            catch(UseLocalBuildingInfo _e)
+            {
+                var Data = await ClassRoomInfoViewModels.GetBuildingInfoByName(RemoteMode:false);
+                NavMenuPrimaryListView.ItemsSource = Data;
+                MessageDialog ms1g = new MessageDialog(_e.Message);
+                await ms1g.ShowAsync();
+            }
+            
+            
 
         }
 
@@ -45,10 +59,21 @@ namespace ClassRoomAPI
             NavMenuPrimaryListView.ItemsSource = Data;
         }
 
-        private async void GetHallList_ClickAsync(object sender, RoutedEventArgs e)
+        private async void GetHallList_Click(object sender, RoutedEventArgs e)
         {
             var Data = await ClassRoomInfoViewModels.GetBuildingNames();
             HallListView.ItemsSource = Data;
+        }
+
+
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var Data = await ClassRoomInfoViewModels.GetBuildingInfoByName(RemoteMode: false);
+            NavMenuPrimaryListView.ItemsSource = Data;
+
+            var DataNames = await ClassRoomInfoViewModels.GetBuildingNames(RemoteMode: false);
+            HallListView.ItemsSource = DataNames;
         }
     }
 }

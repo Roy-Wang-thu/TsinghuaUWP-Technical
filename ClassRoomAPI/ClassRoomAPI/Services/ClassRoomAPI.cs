@@ -58,15 +58,31 @@ namespace ClassRoomAPI.Services
 
         public static class ParseBuildingClassData
         {
-            public static async Task<List<ClassRoomInfoData>> GetClassNamesAsync()
+            public static async Task<List<ClassRoomInfoData>> GetClassNamesAsync(bool RemoteMode=true)
             {
-             
+                if(!RemoteMode)
+                {
+                    try
+                    {
+                        var TempData = await CacheHelper.ReadCache("ClassRoomInfoData");
+                        var ReturnData = JSONHelper.Parse<List<ClassRoomInfoData>>(TempData);
+                        Debug.WriteLine("[GetClassNamesAsync] return local data.");
+                        return ReturnData;
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("[GetClassNamesAsync] return local data fails.");
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("[GetClassNamesAsync] Remote Mode");
+                }
                 if ((DateTime.Now - ClassRoomNamesLastLogin).TotalMinutes < CLASS_ROOM_NAMES_LOGIN_TIMEOUT_MINUTES)
                 {
-                    Debug.WriteLine("[ClassInfoData] reuses recent session");
+                    Debug.WriteLine("[GetClassNamesAsync] reuses recent session");
                     var TempData = await CacheHelper.ReadCache("ClassRoomInfoData");
                     var ReturnData = JSONHelper.Parse<List<ClassRoomInfoData>>(TempData);
-                    //ClassRoomNamesLastLogin = DateTime.Now;
                     return ReturnData;
 
                 }
@@ -100,10 +116,20 @@ namespace ClassRoomAPI.Services
                 }
                 catch
                 {
-                    var TempData = await CacheHelper.ReadCache("ClassRoomInfoData");
-                    var ReturnData = JSONHelper.Parse<List<ClassRoomInfoData>>(TempData);
-                    ClassRoomNamesLastLogin = DateTime.MinValue;
-                    return ReturnData;
+                    try
+                    {
+                        var TempData = await CacheHelper.ReadCache("ClassRoomInfoData");
+                        var ReturnData = JSONHelper.Parse<List<ClassRoomInfoData>>(TempData);
+                        ClassRoomNamesLastLogin = DateTime.MinValue;
+                        return ReturnData;
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("[GetClassNamesAsync] Get Data from local fails.");
+                        ClassRoomNamesLastLogin = DateTime.MinValue;
+                        return null;
+                    }
+                   
                 }
   
             }
@@ -113,22 +139,22 @@ namespace ClassRoomAPI.Services
                 
                 if (!RemoteMode)
                 {
-                    Debug.WriteLine("[ClassInfoData] reuses recent session");
                     try
                     {
                         var TempData = await CacheHelper.ReadCache($"ClassBuildingData_{SourceData.PositionName}");
                         var ReturnData = JSONHelper.Parse<List<ClassRoomStatueData>>(TempData);
+                        Debug.WriteLine("[GetListBuildingInfoAsync] Return Local");
                         return ReturnData;
                     }
                     catch
                     {
-                        Debug.WriteLine("[ClassInfoData] 1st session");
+                        Debug.WriteLine("[GetListBuildingInfoAsync] 1st session");
                     }
                    
                 }
                 else
                 {
-                    Debug.WriteLine("[ClassInfoData] not reuses recent session");
+                    Debug.WriteLine("[GetListBuildingInfoAsync] Remote Mode");
                 }
 
                 try
@@ -188,6 +214,11 @@ namespace ClassRoomAPI.Services
                 }
                 catch
                 {
+                    if (RemoteMode)
+                    {
+                        var _Excption = new UseLocalBuildingInfo("无法连接到服务器，正在使用本地数据。");
+                        throw _Excption;
+                    }
                     try
                     {
                         var TempData = await CacheHelper.ReadCache($"ClassBuildingData_{SourceData.PositionName}");
@@ -196,7 +227,7 @@ namespace ClassRoomAPI.Services
                     }
                     catch
                     {
-                        Debug.WriteLine("[ClassInfoData] GetListBuildingInfoAsync fails with no data returned.");
+                        Debug.WriteLine("[GetListBuildingInfoAsync] GetListBuildingInfoAsync fails with no data returned.");
                         var _ListStatue = new List<string>();
                         for (int i=0;i<6;i++)
                         {
@@ -223,31 +254,35 @@ namespace ClassRoomAPI.Services
                             
             }
 
-            public static async Task<ClassBuildingInfo> GetListAllBuildingInfoAsync()
+            public static async Task<ClassBuildingInfo> GetListAllBuildingInfoAsync(bool RemoteMode=true)
             {
-                if ((DateTime.Now - ClassRoomAllInfoLogin).TotalMinutes < CLASS_ALL_INFO_LOGIN_TIMEOUT_MINUTES)
+                if(RemoteMode)
                 {
-                    Debug.WriteLine("[ClassAllInfoData] reuses recent session");
-                    var TempData = await CacheHelper.ReadCache("AllClassRoomInfoData");
-                    var ReturnData = JSONHelper.Parse<ClassBuildingInfo>(TempData);
-                    return ReturnData;
+                    if ((DateTime.Now - ClassRoomAllInfoLogin).TotalMinutes < CLASS_ALL_INFO_LOGIN_TIMEOUT_MINUTES)
+                    {
+                        Debug.WriteLine("[ClassAllInfoData] reuses recent session");
+                        var TempData = await CacheHelper.ReadCache("AllClassRoomInfoData");
+                        var ReturnData = JSONHelper.Parse<ClassBuildingInfo>(TempData);
+                        return ReturnData;
 
+                    }
+                    else
+                    {
+                        ClassRoomAllInfoLogin = DateTime.Now;
+                    }
                 }
-                else
-                {
-                    ClassRoomAllInfoLogin = DateTime.Now;
-                }
+                
 
                 var _ClassBuildingInfo = new ClassBuildingInfo();
                 _ClassBuildingInfo.ListClassRoomStatue = new List<List<ClassRoomStatueData>>();
                 try
                 {
                     
-                    var _ClassNamesAsync = await GetClassNamesAsync();
+                    var _ClassNamesAsync = await GetClassNamesAsync(RemoteMode);
 
                     foreach (ClassRoomInfoData item in _ClassNamesAsync)
                     {
-                        var _ListBuildingInfo = await GetListBuildingInfoAsync(item);
+                        var _ListBuildingInfo = await GetListBuildingInfoAsync(item,RemoteMode);
                         _ClassBuildingInfo.Date = _ListBuildingInfo[0].Date;
                        
                         _ClassBuildingInfo.ListClassRoomStatue.Add(_ListBuildingInfo);
@@ -259,10 +294,29 @@ namespace ClassRoomAPI.Services
                 }
                 catch
                 {
-                    var TempData = await CacheHelper.ReadCache("AllClassRoomInfoData");
-                    var ReturnData = JSONHelper.Parse<ClassBuildingInfo>(TempData);
-                    ClassRoomAllInfoLogin = DateTime.MinValue;
-                    return ReturnData;
+                    if (RemoteMode)
+                    {
+                        var _Excption = new UseLocalBuildingInfo("无法连接到服务器，正在使用本地数据。");
+                        ClassRoomAllInfoLogin = DateTime.MinValue;
+                        throw _Excption;
+                    }
+                    try
+                    {
+                        var TempData = await CacheHelper.ReadCache("AllClassRoomInfoData");
+                        var ReturnData = JSONHelper.Parse<ClassBuildingInfo>(TempData);
+                        ClassRoomAllInfoLogin = DateTime.MinValue;
+
+                        return ReturnData;
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("[GetListAllBuildingInfoAsync] Get Data from local fails.");
+                        ClassRoomAllInfoLogin = DateTime.MinValue;
+                       
+                        return null;
+                    }
+                    
+                   
                 }
                
 
