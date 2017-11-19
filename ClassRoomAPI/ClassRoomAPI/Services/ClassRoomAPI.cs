@@ -279,6 +279,7 @@ namespace ClassRoomAPI.Services
                 {
                     
                     var _ClassNamesAsync = await GetClassNamesAsync(RemoteMode);
+                    _ClassBuildingInfo.ListClassRoomInfo = _ClassNamesAsync;
 
                     foreach (ClassRoomInfoData item in _ClassNamesAsync)
                     {

@@ -24,6 +24,7 @@ namespace ClassRoomAPI.Models
     public class ClassBuildingInfo
     {
         public string Date;
+        public List<ClassRoomInfoData> ListClassRoomInfo;
         public List<List<ClassRoomStatueData>> ListClassRoomStatue;
     }
 
