@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -15,10 +16,8 @@ namespace ClassRoomAPI.Helpers
         {
             try
             {
-                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
-                {
-                    return (T)new DataContractJsonSerializer(typeof(T)).ReadObject(ms);
-                }
+                return JsonConvert.DeserializeObject<T>(jsonString);
+
             }
             catch (Exception)
             {
@@ -30,12 +29,8 @@ namespace ClassRoomAPI.Helpers
 
         public static string Stringify(object jsonObject)
         {
-            using (var ms = new MemoryStream())
-            {
-                new DataContractJsonSerializer(jsonObject.GetType()).WriteObject(ms, jsonObject);
+            return JsonConvert.SerializeObject(jsonObject);
 
-                return Encoding.UTF8.GetString(ms.ToArray());
-            }
         }
     }
 }

@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using ClassRoomAPI.Services;
 using ClassRoomAPI.ViewModels;
 using Windows.UI.Popups;
+using ClassRoomAPI.Models;
 
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
@@ -41,9 +42,9 @@ namespace ClassRoomAPI
                 var Data = await ClassRoomInfoViewModels.GetBuildingInfoByName();
                 NavMenuPrimaryListView.ItemsSource = Data;
             }
-            catch(UseLocalBuildingInfo _e)
+            catch(MessageException _e)
             {
-                var Data = await ClassRoomInfoViewModels.GetBuildingInfoByName(RemoteMode:false);
+                var Data = await ClassRoomInfoViewModels.GetBuildingInfoByName();
                 NavMenuPrimaryListView.ItemsSource = Data;
                 MessageDialog ms1g = new MessageDialog(_e.Message);
                 await ms1g.ShowAsync();
@@ -69,11 +70,18 @@ namespace ClassRoomAPI
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var Data = await ClassRoomInfoViewModels.GetBuildingInfoByName(RemoteMode: false);
+            var Data = await ClassRoomInfoViewModels.GetBuildingInfoByName();
             NavMenuPrimaryListView.ItemsSource = Data;
+            try
+            {
+                var DataNames = await ClassRoomInfoViewModels.GetBuildingNamesViewModel(ParseDataMode.Local);
+                HallListView.ItemsSource = DataNames;
+            }
+            catch
+            {
 
-            var DataNames = await ClassRoomInfoViewModels.GetBuildingNames(RemoteMode: false);
-            HallListView.ItemsSource = DataNames;
+            }
+           
         }
     }
 }

@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace ClassRoomAPI.Services
 {
-    public class UseLocalBuildingInfo : Exception
+    public class MessageException : Exception
     {
         public new string Message;
-        public UseLocalBuildingInfo(string _message)
+        public MessageException(string _message)
         {
             Message = _message;
         }
     }
+
+    public class NumberException : Exception
+    {
+        public new int Message;
+        public NumberException(int _message)
+        {
+            Message = _message;
+        }
+    }
+
+
 }

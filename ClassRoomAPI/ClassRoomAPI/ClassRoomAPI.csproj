@@ -107,8 +107,8 @@
     <Compile Include="Views\BlankPage.xaml.cs">
       <DependentUpon>BlankPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Views\ClassRoomInfo.xaml.cs">
+      <DependentUpon>ClassRoomInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\NavMenuItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,9 +147,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\ClassRoomInfo.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\News.xaml">
       <SubType>Designer</SubType>

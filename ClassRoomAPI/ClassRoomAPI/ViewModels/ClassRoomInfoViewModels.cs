@@ -2,6 +2,7 @@
 using ClassRoomAPI.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,28 +11,99 @@ namespace ClassRoomAPI.ViewModels
 {
     public class ClassRoomInfoViewModels
     {
-        public static async Task<List<ClassRoomInfoData>> GetBuildingNames(bool RemoteMode=true)
-        {
-            var _ReturnData = new List<ClassRoomInfoData>();
+        private static DateTime TimeBuildingTypeNamesLastLogin = DateTime.MinValue;
+        private static int BUILDING_NAMES_LOGIN_TIMEOUT_MINUTES = 1;
+        private static DateTime TimeAllBuildingInfoLogin = DateTime.MinValue;
+        private static int ALL_BUILDING_INFO_LOGIN_TIMEOUT_MINUTES = 1;
 
-            _ReturnData = await ClassRoomAPIService.ParseBuildingClassData.GetClassNamesAsync(RemoteMode);
-            return _ReturnData;
+        public static async Task<List<BuildingTypeNamesData>> GetBuildingNamesViewModel(ParseDataMode Mode = ParseDataMode.Remote)
+        {
+            if (Mode == ParseDataMode.Local)
+            {
+                try
+                {
+                    return await ClassRoomAPIService.ClassParseBuildingInfo.GetBuildingTypeMode(ParseDataMode.Local);
+                }
+                catch
+                {
+                    Debug.WriteLine("[GetBuildingNamesViewModel] return local data fails.");
+                    var _Exception = new NumberException(ExceptionCodeClassRoomInfo.EXCEPTION_RETURN_LOCAL_DATA_FAILED);
+                    throw _Exception;
+                }
+            }
+            else if (Mode == ParseDataMode.Remote)
+            {
+                if((DateTime.Now - TimeBuildingTypeNamesLastLogin).TotalMinutes< BUILDING_NAMES_LOGIN_TIMEOUT_MINUTES)
+                {
+                    return await ClassRoomAPIService.ClassParseBuildingInfo.GetBuildingTypeMode(ParseDataMode.Local);
+                }
+
+                try
+                {
+                    Debug.WriteLine("[GetBuildingNamesViewModel] return remote data.");
+                    var _ReturnData= await ClassRoomAPIService.ClassParseBuildingInfo.GetBuildingTypeMode(ParseDataMode.Remote);
+                    TimeBuildingTypeNamesLastLogin = DateTime.Now;
+                    return _ReturnData;
+                }
+                catch
+                {
+
+                    Debug.WriteLine("[GetBuildingNamesViewModel] return remote data fails.");
+                    var _Exception = new NumberException(ExceptionCodeClassRoomInfo.EXCEPTION_RETURN_REMOTE_DATA_FAILED);
+                    throw _Exception;
+
+                }
+            }
+            else
+            {
+                //demo
+                return null;
+            }
         }
 
-        public static async Task<List<ClassRoomStatueData>> GetBuildingInfoByName(string Name="四教", bool RemoteMode = true)
+        public static async Task<ClassBuildingInfo> GetAllBuildingInfoViewModel(ParseDataMode Mode = ParseDataMode.Remote)
         {
-            var _OriginData = await ClassRoomAPIService.ParseBuildingClassData.GetListAllBuildingInfoAsync(RemoteMode);
-            var _ReturnData = new List<ClassRoomStatueData>();
-            if(_OriginData!=null)
-                foreach (List<ClassRoomStatueData> item in _OriginData.ListClassRoomStatue)
+            if (Mode == ParseDataMode.Local)
+            {
+                try
                 {
-                    if(item[0].BuildingName==Name)
-                     {
-                        _ReturnData = item;
-                      }
-                 }
+                    return await ClassRoomAPIService.ClassParseBuildingInfo.GetListAllBuildingInfoMode(ParseDataMode.Local);
+                }
+                catch
+                {
+                    Debug.WriteLine("[GetBuildingNamesViewModel] return local data fails.");
+                    var _Exception = new NumberException(ExceptionCodeClassRoomInfo.EXCEPTION_RETURN_LOCAL_DATA_FAILED);
+                    throw _Exception;
+                }
+            }
+            else if (Mode == ParseDataMode.Remote)
+            {
+                if ((DateTime.Now - TimeAllBuildingInfoLogin).TotalMinutes < ALL_BUILDING_INFO_LOGIN_TIMEOUT_MINUTES)
+                {
+                    return await ClassRoomAPIService.ClassParseBuildingInfo.GetListAllBuildingInfoMode(ParseDataMode.Local);
+                }
 
-            return _ReturnData;
+                try
+                {
+                    Debug.WriteLine("[GetBuildingNamesViewModel] return remote data.");
+                    var _ReturnData = await ClassRoomAPIService.ClassParseBuildingInfo.GetListAllBuildingInfoMode(ParseDataMode.Remote);
+                    TimeBuildingTypeNamesLastLogin = DateTime.Now;
+                    return _ReturnData;
+                }
+                catch
+                {
+
+                    Debug.WriteLine("[GetBuildingNamesViewModel] return remote data fails.");
+                    var _Exception = new NumberException(ExceptionCodeClassRoomInfo.EXCEPTION_RETURN_REMOTE_DATA_FAILED);
+                    throw _Exception;
+
+                }
+            }
+            else
+            {
+                //demo
+                return null;
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ namespace ClassRoomAPI
                     Icon = "\xE80F",
                     Label = "TOPIC1",
                     Selected = Visibility.Visible,
-                    DestPage = typeof(MainPage)
+                    DestPage = typeof(ClassRoomInfo)
                 },
 
                 new NavMenuItem()

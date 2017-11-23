@@ -113,13 +113,13 @@ namespace ClassRoomAPI
             Shell ShellPage = rootFrame.Content as Shell;
             var page = ShellPage.RootFrame;
 
-            if (page.CurrentSourcePageType != typeof(MainPage))
+            /*if (page.CurrentSourcePageType != typeof(MainPage))
                 return;
 
             MainPage CurrentPage = ShellPage.RootFrame.Content as MainPage;
             if (voiceCommandName == "refresh")
                 CurrentPage.TempRefreshDataCortana();
-
+            */
 
         }
     }
