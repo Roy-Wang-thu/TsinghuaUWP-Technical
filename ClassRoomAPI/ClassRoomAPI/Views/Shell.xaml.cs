@@ -44,11 +44,21 @@ namespace ClassRoomAPI
                 new NavMenuItem()
                 {
                     FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                    Icon = "\xE772",
+                    Label = "TOPIC3",
+                    Selected = Visibility.Visible,
+                    DestPage = typeof(WebLearn)
+                },
+
+                new NavMenuItem()
+                {
+                    FontFamily = new FontFamily("Segoe MDL2 Assets"),
                     Icon = "\xE771",
                     Label = "TOPIC2",
                     Selected = Visibility.Visible,
                     DestPage = typeof(News)
                 },
+                
 
             });
 
