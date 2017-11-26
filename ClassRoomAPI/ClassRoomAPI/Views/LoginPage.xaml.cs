@@ -56,7 +56,7 @@ namespace ClassRoomAPI.Views
             if(flag==1)
             {
              
-                LocalSettingHelper.SetLocalSettings<string>("username", "2015012133");
+                LocalSettingHelper.SetLocalSettings<string>("username", password.username);
 
                 var vault = new Windows.Security.Credentials.PasswordVault();
                 vault.Add(new Windows.Security.Credentials.PasswordCredential(
