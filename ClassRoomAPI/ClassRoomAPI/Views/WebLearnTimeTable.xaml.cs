@@ -24,38 +24,38 @@ namespace ClassRoomAPI.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class WebLearn : Page
+    public sealed partial class WebLearnTimeTable : Page
     {
-        public WebLearn()
+        public WebLearnTimeTable()
         {
             this.InitializeComponent();
         }
 
-
+       
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if(WebLearnAPIService.CredentialAbsent())
+            if (WebLearnAPIService.CredentialAbsent())
             {
-                //
+                //--
             }
             else
             {
                 try
                 {
-                    var _Data = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Local);
-                    MainPivot.ItemsSource = _Data.ListCourseInfoDetail;
+                    var _Data = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Local);
+                    MainListView.ItemsSource = _Data.ListAppointment;
                     if ((DateTime.Now - _Data.Date).Minutes > 5)
                         throw new Exception("The Data are out-of-date.");
                     else
-                        MainPivot.ItemsSource = _Data.ListCourseInfoDetail;
+                        MainListView.ItemsSource = _Data.ListAppointment;
                 }
                 catch
                 {
                     try
                     {
-                        var _DataRemote = await WebLearnViewModels.GetAllWebLearnViewModel(ParseDataMode.Remote);
-                        MainPivot.ItemsSource = _DataRemote.ListCourseInfoDetail;
+                        var _DataRemote = await WebLearnTimeTableViewModel.GetTimeTableViewModel(ParseDataMode.Remote);
+                        MainListView.ItemsSource = _DataRemote.ListAppointment;
                     }
                     catch
                     {

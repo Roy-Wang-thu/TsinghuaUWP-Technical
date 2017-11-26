@@ -56,7 +56,7 @@ namespace ClassRoomAPI
                     Icon = "\xE771",
                     Label = "TOPIC2",
                     Selected = Visibility.Visible,
-                    DestPage = typeof(News)
+                    DestPage = typeof(WebLearnTimeTable)
                 },
                 
 
@@ -71,7 +71,7 @@ namespace ClassRoomAPI
                     Icon = "\xE13D",
                     Label = "登录",
                     Selected = Visibility.Collapsed,
-                    DestPage = typeof(BlankPage)
+                    DestPage = typeof(LoginPage)
                 }
             });
 

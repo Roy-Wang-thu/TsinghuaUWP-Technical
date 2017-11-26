@@ -91,7 +91,7 @@ namespace ClassRoomAPI.Services
             {
                 try
                 {
-                    LogintoWebLearnMode(WebLearnLoginMode.Local);
+                    await LogintoWebLearnMode(WebLearnLoginMode.Local);
                     var TempData = await CacheHelper.ReadCache(CacheAllWebLearnDataJSON);
                     var ReturnData = JSONHelper.Parse<WebLearnInfo>(TempData);
                     Debug.WriteLine("[GetAllWebLearnInfoMode] return local data.");
@@ -130,7 +130,7 @@ namespace ClassRoomAPI.Services
         //Login
         private static string LoginUri = "https://learn.tsinghua.edu.cn/MultiLanguage/lesson/teacher/loginteacher.jsp";
         private static string CourseListUrl_Login = "http://learn.tsinghua.edu.cn/MultiLanguage/lesson/student/MyCourse.jsp?language=cn";
-        private static async Task<int> LogintoWebLearnAsync(string username = "", string password = "")
+        public static async Task<int> LogintoWebLearnAsync(string username = "", string password = "")
         {
             
             Debug.WriteLine("[login] begin");

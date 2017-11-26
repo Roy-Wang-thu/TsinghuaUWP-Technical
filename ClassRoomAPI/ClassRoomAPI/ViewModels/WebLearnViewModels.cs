@@ -14,6 +14,15 @@ namespace ClassRoomAPI.ViewModels
         private static DateTime TimeAllWebLearnInfoLogin = DateTime.MinValue;
         private static int ALL_WEBLEARN_LOGIN_TIMEOUT_MINUTES = 1;
 
+        public static async Task LoginInToWebLearnViewModel(WebLearnLoginMode Mode)
+        {
+            await WebLearnAPIService.LogintoWebLearnMode(Mode);
+        }
+
+        public static async Task<int> LoginInToWebLearnUsingPassword(string username = "", string password = "")
+        {
+            return await WebLearnAPIService.LogintoWebLearnAsync(username , password );
+        }
         public static async Task<WebLearnInfo> GetAllWebLearnViewModel(ParseDataMode Mode = ParseDataMode.Remote)
         {
             if (Mode == ParseDataMode.Local)
