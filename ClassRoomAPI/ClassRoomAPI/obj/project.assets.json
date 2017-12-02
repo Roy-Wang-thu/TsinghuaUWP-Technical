@@ -21813,7 +21813,7 @@
       ]
     },
     "Newtonsoft.Json/10.0.3": {
-      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
+      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
       "type": "package",
       "path": "newtonsoft.json/10.0.3",
       "files": [
@@ -29304,20 +29304,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thuzhang\\.nuget\\packages\\": {}
+    "C:\\Users\\Roy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thuzhang\\source\\repos\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
+      "projectUniqueName": "D:\\workspaceforGit\\TsinghuaUWP-Technical\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
       "projectName": "ClassRoomAPI",
-      "projectPath": "C:\\Users\\thuzhang\\source\\repos\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
-      "packagesPath": "C:\\Users\\thuzhang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thuzhang\\source\\repos\\ClassRoomAPI\\ClassRoomAPI\\obj\\",
+      "projectPath": "D:\\workspaceforGit\\TsinghuaUWP-Technical\\ClassRoomAPI\\ClassRoomAPI\\ClassRoomAPI.csproj",
+      "packagesPath": "C:\\Users\\Roy\\.nuget\\packages\\",
+      "outputPath": "D:\\workspaceforGit\\TsinghuaUWP-Technical\\ClassRoomAPI\\ClassRoomAPI\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\thuzhang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Roy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -29331,36 +29331,6 @@
         "uap10.0.10586": {
           "projectReferences": {}
         }
-      }
-    },
-    "dependencies": {
-      "HtmlAgilityPack": {
-        "target": "Package",
-        "version": "1.6.5"
-      },
-      "Microsoft.NETCore.UniversalWindowsPlatform": {
-        "target": "Package",
-        "version": "6.0.2"
-      },
-      "Microsoft.Toolkit": {
-        "target": "Package",
-        "version": "2.1.0"
-      },
-      "Microsoft.Toolkit.Uwp": {
-        "target": "Package",
-        "version": "2.1.0"
-      },
-      "Microsoft.Toolkit.Uwp.UI": {
-        "target": "Package",
-        "version": "2.1.0"
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls": {
-        "target": "Package",
-        "version": "2.1.0"
-      },
-      "Newtonsoft.Json": {
-        "target": "Package",
-        "version": "10.0.3"
       }
     },
     "frameworks": {

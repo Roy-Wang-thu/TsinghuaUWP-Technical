@@ -1,4 +1,5 @@
 ﻿using ClassRoomAPI.Controls;
+using ClassRoomAPI.ViewModels;
 using ClassRoomAPI.Views;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace ClassRoomAPI
     /// </summary>
     public sealed partial class Shell : Page
     {
+        NotifyViewModels Notify;
         private static List<NavMenuItem> navMenuPrimaryItem = new List<NavMenuItem>(
             new[]
             {
@@ -77,6 +79,7 @@ namespace ClassRoomAPI
 
         public Shell()
         {
+            this.Notify = new NotifyViewModels();
             this.InitializeComponent();
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 
@@ -184,6 +187,18 @@ namespace ClassRoomAPI
             // Rectangle显示并导航
             item.Selected = Visibility.Visible;
             TitleTextBlock.Text = item.Label;
+
+            // test notify
+            this.Notify.Dismiss();
+            if (item.Label == "TOPIC1")
+            {
+                this.Notify.Show("show longgggggggggggggggggggggggggggg string longgggggggggggggggggg time: " + item.Label, new TimeSpan(0, 0, 5));
+            }
+            else
+            {
+                this.Notify.Show("short: " + item.Label, new TimeSpan(0, 0, 1));
+            }
+
             if (item.DestPage != null)
             {
                 RootFrame.Navigate(item.DestPage);

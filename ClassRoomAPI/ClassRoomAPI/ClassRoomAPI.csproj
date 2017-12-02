@@ -112,6 +112,9 @@
     <Compile Include="Services\WebLearnTimeTableAPI.cs" />
     <Compile Include="Test\ClassRoomInfoTest.cs" />
     <Compile Include="ViewModels\ClassRoomInfoViewModels.cs" />
+    <Compile Include="ViewModels\NotifyViewModels.xaml.cs">
+      <DependentUpon>NotifyViewModels.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\WebLearnTimeTableViewModel.cs" />
     <Compile Include="ViewModels\WebLearnViewModels.cs" />
     <Compile Include="Views\BlankPage.xaml.cs">
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ViewModels\NotifyViewModels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BlankPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
